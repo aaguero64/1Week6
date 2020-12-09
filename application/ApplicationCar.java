@@ -5,5 +5,5 @@ public class ApplicationCar {
 		MenuCar menu = new MenuCar();
 		menu.enter();
 	}
-	test
+	
 }
