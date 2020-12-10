@@ -24,18 +24,19 @@ address varchar (50) NOT NULL,
 city varchar(20),
 state varchar (2),
 zip int (5),
-phone_number int (10),
+phone_number int (12),
 PRIMARY KEY (id),
 FOREIGN KEY (rentcar_id) REFERENCES rentcars(id) 
 );
 
 CREATE TABLE timerent(
+id int(10) NOT NULL auto_increment,
 rentcar_id int(10) NOT NULL,
 customer_id int (10) NOT NULL,
 start_date date NOT NULL,
-end_date date NOT NULL,
+end_date date,
 miles_qty int (10),
-PRIMARY KEY (rentcar_id, customer_id),
+PRIMARY KEY (id),
 FOREIGN KEY (rentcar_id) REFERENCES rentcars(id),
 FOREIGN KEY (customer_id) REFERENCES customers(id)
 );
