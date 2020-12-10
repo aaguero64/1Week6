@@ -31,9 +31,10 @@ FOREIGN KEY (rentcar_id) REFERENCES rentcars(id)
 
 CREATE TABLE timerent(
 id int(10) NOT NULL auto_increment,
+rentcar_id int(10) NOT NULL,
 customer_id int (10) NOT NULL,
 start_date date NOT NULL,
-end_date date NOT NULL,
+end_date date,
 miles_qty int (10),
 PRIMARY KEY (id),
 FOREIGN KEY (rentcar_id) REFERENCES rentcars(id),
