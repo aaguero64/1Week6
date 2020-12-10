@@ -23,7 +23,7 @@ public class RentCarDao {
 		
 		ps.executeUpdate();
 
-		System.out.println("one car Added ");
+		System.out.println("One car was Added ");
 	}
 		
 	

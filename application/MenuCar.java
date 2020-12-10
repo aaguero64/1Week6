@@ -62,11 +62,11 @@ private void printMenu() {
 private void createCar() throws SQLException {
 	System.out.print("Enter car make:  ");
 	String carMake = scanner.nextLine();
-	System.out.println("Enter car model:  ");
+	System.out.print("Enter car model:  ");
 	String carModel = scanner.nextLine();
-	System.out.println("Enter car year:  ");
+	System.out.print("Enter car year:  ");
 	int carYear = Integer.parseInt(scanner.nextLine());
-    System.out.println("Enter car miles:  ");	
+    System.out.print("Enter car miles:  ");	
     int carMiles = Integer.parseInt(scanner.nextLine());
 	rentcarDao.createNewCar(carMake, carModel, carYear, carMiles);
 }
