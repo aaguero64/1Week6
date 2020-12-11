@@ -125,7 +125,6 @@ private void deleteCar() throws SQLException {
 }
 
 private void displayCarRentalRecords() throws SQLException {
-	System.out.println("I am here.");
 	List<TimerentCar> car = timerentCarDao.showAllRentRecords();
 	System.out.println("Car ID:\t  CustomerID:\tStart Date:\t\tEndDate:\tMiles");
 	System.out.println("---------------------------------------------------------------------------------------------------");
@@ -134,8 +133,6 @@ private void displayCarRentalRecords() throws SQLException {
 		System.out.println(result);
 		System.out.println();
 	}
-	System.out.println("I am back.");
-
 }
 
 private void showAllCars() throws SQLException {
