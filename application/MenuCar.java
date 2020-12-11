@@ -19,7 +19,7 @@ public class MenuCar {
 	private List<String> options = Arrays.asList(
 			"Create a Car",
 			"Display Customers",
-			"Update Car Miles",
+			"Update Car Transaction",
 			"Delete a Car",
 			"Display Car Rental Records",
 			"Display All Cars");
@@ -126,12 +126,11 @@ private void deleteCar() throws SQLException {
 
 private void displayCarRentalRecords() throws SQLException {
 	List<TimerentCar> car = timerentCarDao.showAllRentRecords();
-	System.out.println("Car ID:\t  CustomerID:\tStart Date:\t\tEndDate:\tMiles");
+	System.out.println("Id:\tCar ID:\t  CustomerID:\t\tStart Date:\tEndDate:\tMiles");
 	System.out.println("---------------------------------------------------------------------------------------------------");
 	for ( TimerentCar c : car ) {
-		String result = (c.getRentcars() + "\t\t" + c.getCustomercars() + "\t\t" + c.getStartDate() + "\t\t" + c.getEndDate() + "\t" +  c.getMilesQty());
+		String result = (c.getId() + "\t" + c.getRentcars() + "\t\t" + c.getCustomercars() + "\t\t" + c.getStartDate() + "\t" + c.getEndDate() + "\t" +  c.getMilesQty());
 		System.out.println(result);
-		System.out.println();
 	}
 }
 
