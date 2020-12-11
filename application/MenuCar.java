@@ -5,13 +5,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-
+import dao.CustomerCarDao;
 import dao.RentCarDao;
 import dao.TimerentCarDao;
 
 public class MenuCar {
 	private RentCarDao rentcarDao = new RentCarDao();
 	private TimerentCarDao timerentCarDao = new TimerentCarDao();
+	private CustomerCarDao customerCarDao = new CustomerCarDao();
 	private Scanner scanner = new Scanner(System.in);
 	private List<String> options = Arrays.asList(
 			"Create a Car",
@@ -36,7 +37,7 @@ public class MenuCar {
 			} else if (selection.equals("3")) {
 				updateCar();
 			}else if (selection.equals("4")) {
-				//deleteCar();
+				deleteCar();
 			//}else if (selection.equals("5")) {
 				//displayCustemerbyCar();
 			//}else if (selection.equals("6")) {
@@ -97,6 +98,16 @@ private void updateCar() throws SQLException {
 	
 	
 }
+
+private void deleteCar() throws SQLException {
+	System.out.print("Enter car id to delete:");
+	int id = Integer.parseInt(scanner.nextLine());
+	timerentCarDao.deleteCarById(id);
+	customerCarDao.deleteCarById(id);
+	rentcarDao.deleteCarById(id);
+}
+	
+
 }	
 	
 	
