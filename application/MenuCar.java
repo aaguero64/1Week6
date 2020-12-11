@@ -126,14 +126,12 @@ private void deleteCar() throws SQLException {
 
 private void displayCarRentalRecords() throws SQLException {
 	System.out.println("I am here.");
-//	timerentCarDao.showAllRentRecords();
 	List<TimerentCar> car = timerentCarDao.showAllRentRecords();
 	System.out.println("Car ID:\t  CustomerID:\tStart Date:\t\tEndDate:\tMiles");
 	System.out.println("---------------------------------------------------------------------------------------------------");
 	for ( TimerentCar c : car ) {
 		String result = (c.getRentcars() + "\t\t" + c.getCustomercars() + "\t\t" + c.getStartDate() + "\t\t" + c.getEndDate() + "\t" +  c.getMilesQty());
 		System.out.println(result);
-		//		System.out.format("%-2s %10s %11s %12s %13s %14s", c.getRentcars(), c.getCustomercars(), c.getStartDate(), c.getEndDate(), c.getMilesQty());
 		System.out.println();
 	}
 	System.out.println("I am back.");

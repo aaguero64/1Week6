@@ -60,7 +60,6 @@ public class RentCarDao {
 	}
 
 private RentCar populateCars(int int1, String string, String string2, int int2, int int3) {
-	// TODO Auto-generated method stub
 	return new RentCar(int1, string, string2, int2, int3);
 }
 
