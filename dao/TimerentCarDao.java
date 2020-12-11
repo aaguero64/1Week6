@@ -10,7 +10,8 @@ public class TimerentCarDao {
 	private final String UPDATE_CAR_MILES = "INSERT INTO timerent("
 			+ "rentcar_id, customer_id, start_date, end_date, miles_qty)"
 			+ " VALUES (?, ?, ?, ?,?)";
-
+	private final String DELETE_CAR_BY_ID_QUERY = "DELETE FROM timerent WHERE rentcar_id = ?";
+	
 	public TimerentCarDao()		{
 		connection = DBCarConnection.getConnection();
 	}
@@ -30,4 +31,11 @@ public class TimerentCarDao {
 		System.out.println("Rental Transaction Dates Added! ");
 	}
 	
+
+	public void deleteCarById(int id) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(DELETE_CAR_BY_ID_QUERY);
+		ps.setInt(1, id);
+		ps.executeUpdate();
+	}
+
 }
