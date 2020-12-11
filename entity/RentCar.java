@@ -1,8 +1,5 @@
 package entity;
 
-import java.util.Date;
-import java.util.List;
-
 public class RentCar {
 	private int carId;
 	private String carMake;
