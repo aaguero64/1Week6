@@ -17,7 +17,7 @@ PRIMARY KEY (id)
 
 CREATE TABLE customers(
 id int(10) NOT NULL auto_increment,
-rentcar_id int(10) NOT NULL,
+rentcar_id int(10),
 first_name varchar (50) NOT NULL,
 last_name varchar (50) NOT NULL,
 address varchar (50) NOT NULL,
