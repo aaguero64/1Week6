@@ -33,7 +33,7 @@ public class MenuCar {
 			if (selection.equals("1")){
 				createCar();
 			} else if (selection.equals("2")) {
-				//readCustomers();
+				readCustomers();
 			} else if (selection.equals("3")) {
 				updateCar();
 			}else if (selection.equals("4")) {
@@ -73,6 +73,11 @@ private void createCar() throws SQLException {
     System.out.print("Enter car miles:  ");	
     int carMiles = Integer.parseInt(scanner.nextLine());
 	rentcarDao.createNewCar(carMake, carModel, carYear, carMiles);
+}
+
+private void readCustomers() throws SQLException {
+	System.out.println("Customers List ");
+	customerCarDao.getCustomer();
 }
 	
 private void updateCar() throws SQLException {
