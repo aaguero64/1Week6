@@ -9,6 +9,7 @@ public class RentCarDao {
 	
 	private Connection connection;
 	private final String CREATE_NEW_CAR_QUERY= "INSERT INTO rentcars(car_make, car_model, car_year, car_miles ) VALUES (?, ?, ?, ?)";
+	private final String UPDATE_CAR_MILES = "UPDATE rentcars SET car_miles = car_miles + ? WHERE id = ?";
 	
 	public RentCarDao() {
 		connection = DBCarConnection.getConnection();
@@ -26,6 +27,15 @@ public class RentCarDao {
 		System.out.println("One car was Added ");
 	}
 		
+	public void updateMiles(int returnMiles, int carRecordId) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(UPDATE_CAR_MILES);
+		ps.setInt(1, returnMiles);
+		ps.setInt(2, carRecordId);
+		
+		ps.executeUpdate();
+		
+		System.out.println("Miles updated! ");
+	}
 	
 
 }
