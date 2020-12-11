@@ -8,7 +8,7 @@ public class RentCarDao {
 	
 	private Connection connection;
 	private final String CREATE_NEW_CAR_QUERY= "INSERT INTO rentcars(car_make, car_model, car_year, car_miles ) VALUES (?, ?, ?, ?)";
-	private final String UPDATE_CAR_MILES = "UPDATE rentcars SET car_miles = car_miles + ? WHERE id = ?";
+	private final String UPDATE_CAR_MILES = "UPDATE rentcars SET car_miles = (car_miles + ?) WHERE id = ?";
 	private final String DELETE_CAR_BY_ID_QUERY = "DELETE FROM rentcars WHERE id = ?";
 		
 	public RentCarDao() {
