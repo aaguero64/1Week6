@@ -8,6 +8,7 @@ import java.util.Scanner;
 import dao.CustomerCarDao;
 import dao.RentCarDao;
 import dao.TimerentCarDao;
+import entity.TimerentCar;
 
 public class MenuCar {
 	private RentCarDao rentcarDao = new RentCarDao();
@@ -18,9 +19,11 @@ public class MenuCar {
 			"Create a Car",
 			"Display Customers",
 			"Update Car Miles",
-			"Delete a Car");
+			"Delete a Car",
+			"Display Car Rental Records");
 			//"Display Customer by Car",
 			//"Display Rent time by Car");
+
 	
 	public void enter() {
 	
@@ -42,6 +45,8 @@ public class MenuCar {
 				//displayCustemerbyCar();
 			//}else if (selection.equals("6")) {
 				//displayCarbyTimeRent();
+			}else if (selection.equals("5")) {
+				displayCarRentalRecords();
 			}
 			
 	} catch (SQLException e) {
@@ -56,6 +61,7 @@ public class MenuCar {
 	}while (!selection.equals("-1"));
 	
 }
+	
 private void printMenu() {
 	System.out.println(" Select an Option: \n ...................");
 	for (int i=0; i<options.size(); i++) {
@@ -111,7 +117,14 @@ private void deleteCar() throws SQLException {
 	customerCarDao.deleteCarById(id);
 	rentcarDao.deleteCarById(id);
 }
-	
+
+private void displayCarRentalRecords() throws SQLException {
+	List<TimerentCar> car = timerentCarDao.showAllRentRecords();
+	for ( TimerentCar c : car ) {
+		System.out.format("%-2s %12s %12s %10s %10s", c.getRentcars(), c.getCustomercars(), c.getStartDate(), c.getEndDate(), c.getMilesQty());
+		System.out.println();
+	}
+}
 
 }	
 	

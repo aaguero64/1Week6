@@ -3,6 +3,7 @@ package entity;
 import java.util.Date;
 import java.util.List;
 
+
 public class TimerentCar {
 	
 	private Date startDate;
@@ -11,14 +12,14 @@ public class TimerentCar {
 	private List<RentCar> rentcars;
 	private List<CustomerCar> customercars;
 	
-	public TimerentCar (Date startDate, Date endDate, int milesQty, List<RentCar> rentcars, List<CustomerCar> customercars) {
-		
+	public TimerentCar(int int1, int int2, String string1, String string2, int int3) {		
+		this.setRentcars(rentcars);
+		this.setCustomercars(customercars);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
 		this.setMilesQty(milesQty);
-		this.setRentcars(rentcars);
-		this.setCustomercars(customercars);
 	}
+
 
 	public Date getStartDate() {
 		return startDate;
