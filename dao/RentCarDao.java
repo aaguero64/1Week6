@@ -2,7 +2,12 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import entity.RentCar;
 
 public class RentCarDao {
 	
@@ -10,6 +15,7 @@ public class RentCarDao {
 	private final String CREATE_NEW_CAR_QUERY= "INSERT INTO rentcars(car_make, car_model, car_year, car_miles ) VALUES (?, ?, ?, ?)";
 	private final String UPDATE_CAR_MILES = "UPDATE rentcars SET car_miles = (car_miles + ?) WHERE id = ?";
 	private final String DELETE_CAR_BY_ID_QUERY = "DELETE FROM rentcars WHERE id = ?";
+	private final String SHOW_ALL_RENTAL_CARS = "SELECT * FROM rentcars";
 		
 	public RentCarDao() {
 		connection = DBCarConnection.getConnection();
@@ -43,5 +49,20 @@ public class RentCarDao {
 		ps.executeUpdate();
 		
 	}
-	
+
+	public List<RentCar> showAllRentCars() throws SQLException {
+		List<RentCar> car = new ArrayList<RentCar>();
+		ResultSet rs = connection.prepareStatement(SHOW_ALL_RENTAL_CARS).executeQuery();
+		while(rs.next()) {	
+			car.add(populateCars(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5)));
+		}
+			return car;
+	}
+
+private RentCar populateCars(int int1, String string, String string2, int int2, int int3) {
+	// TODO Auto-generated method stub
+	return new RentCar(int1, string, string2, int2, int3);
+}
+
+
 }

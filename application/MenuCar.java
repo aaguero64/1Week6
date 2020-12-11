@@ -8,6 +8,7 @@ import java.util.Scanner;
 import dao.CustomerCarDao;
 import dao.RentCarDao;
 import dao.TimerentCarDao;
+import entity.RentCar;
 import entity.TimerentCar;
 
 public class MenuCar {
@@ -20,7 +21,8 @@ public class MenuCar {
 			"Display Customers",
 			"Update Car Miles",
 			"Delete a Car",
-			"Display Car Rental Records");
+			"Display Car Rental Records",
+			"Display All Cars");
 			//"Display Customer by Car",
 			//"Display Rent time by Car");
 
@@ -47,6 +49,8 @@ public class MenuCar {
 				//displayCarbyTimeRent();
 			}else if (selection.equals("5")) {
 				displayCarRentalRecords();
+			}else if (selection.equals("6")) {
+				showAllCars();
 			}
 			
 	} catch (SQLException e) {
@@ -62,6 +66,8 @@ public class MenuCar {
 	
 }
 	
+
+
 private void printMenu() {
 	System.out.println(" Select an Option: \n ...................");
 	for (int i=0; i<options.size(); i++) {
@@ -119,13 +125,33 @@ private void deleteCar() throws SQLException {
 }
 
 private void displayCarRentalRecords() throws SQLException {
+	System.out.println("I am here.");
+//	timerentCarDao.showAllRentRecords();
 	List<TimerentCar> car = timerentCarDao.showAllRentRecords();
+	System.out.println("Car ID:\t  CustomerID:\tStart Date:\t\tEndDate:\tMiles");
+	System.out.println("---------------------------------------------------------------------------------------------------");
 	for ( TimerentCar c : car ) {
-		System.out.format("%-2s %12s %12s %10s %10s", c.getRentcars(), c.getCustomercars(), c.getStartDate(), c.getEndDate(), c.getMilesQty());
+		String result = (c.getRentcars() + "\t\t" + c.getCustomercars() + "\t\t" + c.getStartDate() + "\t\t" + c.getEndDate() + "\t" +  c.getMilesQty());
+		System.out.println(result);
+		//		System.out.format("%-2s %10s %11s %12s %13s %14s", c.getRentcars(), c.getCustomercars(), c.getStartDate(), c.getEndDate(), c.getMilesQty());
 		System.out.println();
 	}
+	System.out.println("I am back.");
+
 }
 
+private void showAllCars() throws SQLException {
+	System.out.println("Showing all Cars!\n");
+	System.out.format("%-2s %12s %12s %10s %10s \n", "Id:", "Car Make:", "Car Model:", "Year:", "Miles");
+	System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+	
+	List<RentCar> car = rentcarDao.showAllRentCars();
+	for ( RentCar c : car ) {
+		System.out.format("%-2s %12s %12s %10s %10s", c.getCarId(), c.getCarMake(), c.getCarModel(), c.getCarYear(), c.getCarMiles());
+		System.out.println();
+	}
+
+}
 }	
 	
 	
