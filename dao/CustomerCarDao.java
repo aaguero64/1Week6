@@ -5,13 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
+
+import entity.CustomerCar;
 
 public class CustomerCarDao {
 
 
-	private Connection connection;
+	private static Connection connection;
 	
-	private final String CREATE_CUSTOMERS_LIST_QUERY = "SELECT * FROM customers";
+	private final static String CREATE_CUSTOMERS_LIST_QUERY = "SELECT * FROM customers";
 	private final String DELETE_CAR_BY_ID_QUERY = "UPDATE customers SET rentcar_id = null WHERE rentcar_id = ?";
 	private final String ADD_NEW_CUSTOMER_QUERY= "INSERT INTO customers(rentcar_id, first_name, last_name, address ) VALUES (?, ?, ?, ?)";
 	
@@ -49,6 +53,26 @@ public class CustomerCarDao {
 
 		System.out.println("Customer record has been added.");
 		
+	}
+	
+	public static List<CustomerCar> showAllCustomersRecords() throws SQLException{
+		List<CustomerCar> cus = new ArrayList<CustomerCar>();
+		ResultSet rs =  connection.prepareStatement(CREATE_CUSTOMERS_LIST_QUERY).executeQuery();		
+		 while(rs.next()) {
+			 cus.add(populateCustomerData(rs.getInt(1), rs.getInt(2), 
+					 rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), 
+					 rs.getString(7), rs.getInt(8), rs.getInt(9)));
+		 }
+		 return cus;
+		
+	}
+		
+	private static CustomerCar populateCustomerData(int id, int rentCarId, String firstName, 
+			String lastName, String address, String city, String state, 
+			int zip, int phone) {
+		return new CustomerCar(id, rentCarId, firstName, lastName, 
+				address, city, state, zip, phone);
+			
 	}
 	
 }
