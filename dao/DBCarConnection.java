@@ -9,7 +9,7 @@ public class DBCarConnection {
 	
 	private final static String URL = "jdbc:mysql://localhost:3306/rentcar"; 
 	private final static String USERNAME = "root";
-	private final static String PASSWORD = "root";  //CHANGE THIS TO YOUR PASSWORD***********
+	private final static String PASSWORD = "Adrian1964";  //CHANGE THIS TO YOUR PASSWORD***********
 	private static Connection connection;
 	private static DBCarConnection instance;
 	

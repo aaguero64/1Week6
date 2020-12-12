@@ -23,7 +23,7 @@ public class MenuCar {
 			"Update Car Transaction",
 			"Display Car Rental Records",
 			"Display All Cars",
-			"Add a Customer");
+			"Read a Customer");
 				
 	public void enter() {
 	
@@ -73,6 +73,7 @@ private void printMenu() {
 	System.out.println("Select an Option: \n ...................");
 	for (int i=0; i<options.size(); i++) {
 		System.out.println(i + 1 + ")" + options.get(i));
+	}
 	}
 
 	private void createCar() throws SQLException {
