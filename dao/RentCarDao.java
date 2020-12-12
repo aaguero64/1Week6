@@ -12,8 +12,10 @@ import entity.RentCar;
 public class RentCarDao {
 	
 	private Connection connection;
-	private final String CREATE_NEW_CAR_QUERY= "INSERT INTO rentcars(car_make, car_model, car_year, car_miles ) VALUES (?, ?, ?, ?)";
-	private final String UPDATE_CAR_MILES = "UPDATE rentcars SET car_miles = (car_miles + ?) WHERE id = ?";
+	private final String CREATE_NEW_CAR_QUERY= "INSERT INTO rentcars"
+			+ "(car_make, car_model, car_year, car_miles ) VALUES (?, ?, ?, ?)";
+	private final String UPDATE_CAR_MILES = "UPDATE rentcars "
+			+ "SET car_miles = (car_miles + ?) WHERE id = ?";
 	private final String DELETE_CAR_BY_ID_QUERY = "DELETE FROM rentcars WHERE id = ?";
 	private final String SHOW_ALL_RENTAL_CARS = "SELECT * FROM rentcars";
 		
@@ -42,14 +44,12 @@ public class RentCarDao {
 		
 		System.out.println("Miles updated! ");
 	}
-
-
 	
 	public void deleteCarById(int id) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(DELETE_CAR_BY_ID_QUERY);
 		ps.setInt(1, id);
+
 		ps.executeUpdate();
-		
 	}
 
 	public List<RentCar> showAllRentCars() throws SQLException {
@@ -58,12 +58,10 @@ public class RentCarDao {
 		while(rs.next()) {	
 			car.add(populateCars(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5)));
 		}
-			return car;
+		return car;
 	}
 
-private RentCar populateCars(int int1, String string, String string2, int int2, int int3) {
-	return new RentCar(int1, string, string2, int2, int3);
-}
-
-
+	private RentCar populateCars(int int1, String string, String string2, int int2, int int3) {
+		return new RentCar(int1, string, string2, int2, int3);
+	}
 }

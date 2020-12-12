@@ -1,6 +1,4 @@
- package entity;
-
-import java.util.List;
+package entity;
 
 public class CustomerCar {
 
@@ -100,8 +98,4 @@ public class CustomerCar {
 	public void setRentcars(int rentcars2) {
 		this.rentcars = rentcars2;
 	}
-
-	
-
-	
 }
