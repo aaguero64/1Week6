@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.tools.javac.code.Types;
+//import com.sun.tools.javac.code.Types;
 
 import entity.CustomerCar;
 
@@ -66,7 +66,7 @@ public class CustomerCarDao {
 	public void getCustomer() throws SQLException {
 			ResultSet rs = connection.prepareStatement(CREATE_CUSTOMERS_LIST_QUERY).executeQuery();
 				while (rs.next()) {
-					System.out.println(rs.getInt(1) + "\t\t" + rs.getString(3) +  "\t\t " + rs.getString(4) + "\t\t" + rs.getInt(8));
+					System.out.println(" " + rs.getInt(1) + "\t\t" + rs.getString(3) + " " + rs.getString(4) + "\t\t" + rs.getInt(8));
 				}
 		}
 }
