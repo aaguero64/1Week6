@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.Date;
-
 public class TimerentCar {
 	
 	private int id;
@@ -67,7 +65,4 @@ public class TimerentCar {
 	public void setMilesQty(int milesQty) {
 		this.milesQty = milesQty;
 	}
-
-	
-
 }

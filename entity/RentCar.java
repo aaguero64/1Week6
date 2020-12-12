@@ -54,6 +54,4 @@ public class RentCar {
 	public void setCarMiles(int carMiles) {
 		this.carMiles = carMiles;
 	}
-
-	
 }
