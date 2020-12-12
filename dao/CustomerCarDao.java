@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,21 +14,28 @@ public class CustomerCarDao {
 
 	private static Connection connection;
 	
-	private final static String CREATE_CUSTOMERS_LIST_QUERY = "SELECT * FROM customers";
-	private final String DELETE_CAR_BY_ID_QUERY = "UPDATE customers SET rentcar_id = null WHERE rentcar_id = ?";
-	private final String ADD_NEW_CUSTOMER_QUERY= "INSERT INTO customers(rentcar_id, first_name, last_name, address ) VALUES (?, ?, ?, ?)";
+	private final String CREATE_CUSTOMERS_LIST_QUERY = "SELECT (id, first_name, last_name, phone_number) FROM customers";
+	private final String DELETE_CAR_BY_ID_QUERY = "DELETE FROM customers WHERE rentcar_id = ?";
 	
 	// This connection need to be done at any DAO class to be able to connect to the Connection class.
 	public CustomerCarDao() {
 		connection = DBCarConnection.getConnection();
 	}
 	
-	public void getCustomer() throws SQLException {
-		ResultSet rs = connection.prepareStatement(CREATE_CUSTOMERS_LIST_QUERY).executeQuery();
-			while (rs.next()) {
-				System.out.println("Full Name: " + rs.getString(3) + " " + rs.getString(4));
-			}
-	}	
+	public List<CustomerCar> showAllCustomersRecords() throws SQLException{
+		List<CustomerCar> cus = new ArrayList<CustomerCar>();
+		ResultSet rs =  connection.prepareStatement(CREATE_CUSTOMERS_LIST_QUERY).executeQuery();		
+		 while(rs.next()) {
+			 cus.add(populateCustomerData(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getInt(9)));
+		 }
+		 return cus;
+		 
+	}
+		
+	private CustomerCar populateCustomerData(int id, String name, String lastname, int phone) {
+		return new CustomerCar(id, name, lastname, phone);
+			
+	}
 
 	public void deleteCarById(int id) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(DELETE_CAR_BY_ID_QUERY);
@@ -55,24 +61,10 @@ public class CustomerCarDao {
 		
 	}
 	
-	public static List<CustomerCar> showAllCustomersRecords() throws SQLException{
-		List<CustomerCar> cus = new ArrayList<CustomerCar>();
-		ResultSet rs =  connection.prepareStatement(CREATE_CUSTOMERS_LIST_QUERY).executeQuery();		
-		 while(rs.next()) {
-			 cus.add(populateCustomerData(rs.getInt(1), rs.getInt(2), 
-					 rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), 
-					 rs.getString(7), rs.getInt(8), rs.getInt(9)));
-		 }
-		 return cus;
-		
-	}
-		
-	private static CustomerCar populateCustomerData(int id, int rentCarId, String firstName, 
-			String lastName, String address, String city, String state, 
-			int zip, int phone) {
-		return new CustomerCar(id, rentCarId, firstName, lastName, 
-				address, city, state, zip, phone);
-			
-	}
-	
+	//public void getCustomer() throws SQLException {
+			//ResultSet rs = connection.prepareStatement(CREATE_CUSTOMERS_LIST_QUERY).executeQuery();
+				//while (rs.next()) {
+					//System.out.println("Full Name: " + rs.getString(3) + " " + rs.getString(4));
+			//	}
+		//}
 }

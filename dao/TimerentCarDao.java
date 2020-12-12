@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import entity.RentCar;
@@ -45,18 +46,21 @@ public class TimerentCarDao {
 		ps.setInt(1, id);
 		ps.executeUpdate();
 	}
+		
 	
 	public List<TimerentCar> showAllRentRecords() throws SQLException {
 		List<TimerentCar> car = new ArrayList<TimerentCar>();
 		ResultSet rs = connection.prepareStatement(SHOW_ALL_RENTAL_CARS).executeQuery();
+		
 		while(rs.next()) {	
 			car.add(populateRentalData(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
 		}
 			return car;
 	}
 
-	private TimerentCar populateRentalData(int int0, int int1, int int2, String string1, String string2, int int3) {
-		return new TimerentCar(int0, int1, int2, string1, string2, int3);
+	private TimerentCar populateRentalData(int int1, int int2, String string1, String string2, int int3) {
+		return new TimerentCar(int1, int2, string1, string2, int2);
+	
+	
 	}
-
 }
