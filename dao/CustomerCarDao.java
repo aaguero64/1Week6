@@ -12,7 +12,7 @@ import entity.CustomerCar;
 public class CustomerCarDao {
 
 
-	private Connection connection;
+	private static Connection connection;
 	
 	private final String CREATE_CUSTOMERS_LIST_QUERY = "SELECT (id, first_name, last_name, phone_number) FROM customers";
 	private final String DELETE_CAR_BY_ID_QUERY = "DELETE FROM customers WHERE rentcar_id = ?";
@@ -42,7 +42,24 @@ public class CustomerCarDao {
 		ps.setInt(1, id);
 		ps.executeUpdate();
 		
-	}	
+	}
+
+	public void addCustomer(String firstName, String lastName, String customerAddress, int carId) throws SQLException {
+		PreparedStatement ps = connection.prepareStatement(ADD_NEW_CUSTOMER_QUERY);
+		if(carId==0) {
+			ps.setNull(1, Types.INTEGER);
+		}else {
+			ps.setInt(1, carId);
+		}	
+		ps.setString(2, firstName);
+		ps.setString(3, lastName);
+		ps.setString(4, customerAddress);
+		
+		ps.executeUpdate();
+
+		System.out.println("Customer record has been added.");
+		
+	}
 	
 	//public void getCustomer() throws SQLException {
 			//ResultSet rs = connection.prepareStatement(CREATE_CUSTOMERS_LIST_QUERY).executeQuery();

@@ -20,10 +20,11 @@ public class MenuCar {
 	private List<String> options = Arrays.asList(
 			"Create a Car",
 			"Display Customers",
-			"Update Car Miles",
+			"Update Car Transaction",
 			"Delete a Car",
 			"Display Car Rental Records",
-			"Display All Cars");
+			"Display All Cars",
+			"Add a Customer");
 			//"Display Customer by Car",
 			//"Display Rent time by Car");
 
@@ -52,6 +53,8 @@ public class MenuCar {
 				displayCarRentalRecords();
 			}else if (selection.equals("6")) {
 				showAllCars();
+			}else if (selection.equals("7")) {
+				addCustomer();
 			}
 			
 	} catch (SQLException e) {
@@ -125,21 +128,21 @@ private void updateCar() throws SQLException {
 }
 
 private void deleteCar() throws SQLException {
-	System.out.print("Enter car id to delete:");
+	System.out.print("Enter car id to delete: ");
 	int id = Integer.parseInt(scanner.nextLine());
 	timerentCarDao.deleteCarById(id);
 	customerCarDao.deleteCarById(id);
 	rentcarDao.deleteCarById(id);
+	System.out.println("Car record deleted successfully.");
 }
 
 private void displayCarRentalRecords() throws SQLException {
 	List<TimerentCar> car = timerentCarDao.showAllRentRecords();
-	System.out.println("Car ID:\t  CustomerID:\tStart Date:\t\tEndDate:\tMiles");
+	System.out.println("Id:\tCar ID:\t  CustomerID:\t\tStart Date:\tEndDate:\tMiles");
 	System.out.println("---------------------------------------------------------------------------------------------------");
 	for ( TimerentCar c : car ) {
-		String result = (c.getRentcars() + "\t\t" + c.getCustomercars() + "\t\t" + c.getStartDate() + "\t\t" + c.getEndDate() + "\t" +  c.getMilesQty());
+		String result = (c.getId() + "\t" + c.getRentcars() + "\t\t" + c.getCustomercars() + "\t\t" + c.getStartDate() + "\t" + c.getEndDate() + "\t" +  c.getMilesQty());
 		System.out.println(result);
-		System.out.println();
 	}
 }
 
@@ -155,6 +158,19 @@ private void showAllCars() throws SQLException {
 	}
 
 }
+
+private void addCustomer() throws SQLException {
+	System.out.print("Enter customer first name:  ");
+	String firstName = scanner.nextLine();
+	System.out.print("Enter customer last name:  ");
+	String lastName = scanner.nextLine();
+	System.out.print("Enter customer address:  ");
+	String customerAddress = scanner.nextLine();
+	System.out.print("If customer is renting a car enter the car id otherwise enter \"0\":  ");
+	int carId = Integer.parseInt(scanner.nextLine());
+	customerCarDao.addCustomer(firstName, lastName, customerAddress, carId);
+}
+
 }	
 	
 	

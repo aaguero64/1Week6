@@ -53,7 +53,7 @@ public class TimerentCarDao {
 		ResultSet rs = connection.prepareStatement(SHOW_ALL_RENTAL_CARS).executeQuery();
 		
 		while(rs.next()) {	
-			car.add(populateRentalData(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+			car.add(populateRentalData(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
 		}
 			return car;
 	}
