@@ -43,6 +43,8 @@ public class RentCarDao {
 		System.out.println("Miles updated! ");
 	}
 
+
+	
 	public void deleteCarById(int id) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(DELETE_CAR_BY_ID_QUERY);
 		ps.setInt(1, id);
