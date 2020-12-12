@@ -92,15 +92,16 @@ private void createCar() throws SQLException {
 }
 
 private void readCustomers() throws SQLException {
-	List<CustomerCar> cus = customerCarDao.showAllCustomersRecords();
+	//List<CustomerCar> cus = customerCarDao.showAllCustomersRecords();
 	System.out.println("Cust Id:\t   Cust Name:\t\t Cust Last Name:\t Phone Number");
 	System.out.println("------------------------------------------------------------------------------");
-	for (CustomerCar c : cus) {
-		String result = (c.getCustomerId() + "t" + c.getCustomerFirstName() + "\t\t  " + c.getCustomerLastName() + "\t" + c.getCustomerPhoneNumber());
-		System.out.println(result);
-	}
+	//for (CustomerCar c : cus) {
+	//	String result = (c.getCustomerId() + "t" + c.getCustomerFirstName() + "\t\t  " + c.getCustomerLastName() + "\t" + c.getCustomerPhoneNumber());
+	//	System.out.println(result);
+	//}
 	//System.out.println("Customers List ");
-	//customerCarDao.getCustomer();
+	customerCarDao.getCustomer();
+
 }
 	
 private void updateCar() throws SQLException {
@@ -155,6 +156,7 @@ private void showAllCars() throws SQLException {
 	for ( RentCar c : car ) {
 		System.out.format("%-2s %12s %12s %10s %10s", c.getCarId(), c.getCarMake(), c.getCarModel(), c.getCarYear(), c.getCarMiles());
 		System.out.println();
+	
 	}
 
 }
