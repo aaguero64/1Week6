@@ -1,8 +1,5 @@
 package entity;
 
-import java.util.Date;
-import java.util.List;
-
 public class RentCar {
 	private int carId;
 	private String carMake;
@@ -57,6 +54,4 @@ public class RentCar {
 	public void setCarMiles(int carMiles) {
 		this.carMiles = carMiles;
 	}
-
-	
 }

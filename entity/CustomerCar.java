@@ -1,6 +1,4 @@
- package entity;
-
-import java.util.List;
+package entity;
 
 public class CustomerCar {
 
@@ -12,10 +10,11 @@ public class CustomerCar {
 	private String customerState;
 	private int customerZip;
 	private int customerPhoneNumber;
-	private List<RentCar> rentcars;
+	private int rentcars;
 	
-	public CustomerCar(int customerId, String customerFirstName, String customerLastName, 
-			String customerAddress, String customerCity, String customerState, int customerZip, int customerPhoneNumber, List<RentCar> rentcars) {
+	public CustomerCar(int customerId, int rentcars, String customerFirstName, 
+			String customerLastName, String customerAddress, String customerCity, 
+			String customerState, int customerZip, int customerPhoneNumber) {
 		
 		this.setCustomerId(customerId);
 		this.setCustomerFirstName(customerFirstName);
@@ -92,15 +91,11 @@ public class CustomerCar {
 		this.customerPhoneNumber = customerPhoneNumber;
 	}
 
-	public List<RentCar> getRentcars() {
+	public int getRentcars() {
 		return rentcars;
 	}
 
-	public void setRentcars(List<RentCar> rentcars) {
-		this.rentcars = rentcars;
+	public void setRentcars(int rentcars2) {
+		this.rentcars = rentcars2;
 	}
-
-	
-
-	
 }
