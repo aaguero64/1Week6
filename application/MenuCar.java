@@ -25,8 +25,7 @@ public class MenuCar {
 			"Display Car Rental Records",
 			"Display All Cars",
 			"Add a Customer");
-			
-	
+				
 	public void enter() {
 	
 	String selection = " ";	
@@ -71,7 +70,12 @@ public class MenuCar {
 
 
 private void printMenu() {
-	System.out.println(" Select an Option: \n ...................");
+	System.out.println(" \t\t  Rent A Car Program");
+	System.out.println(" \t\t ********************");
+	System.out.println("Authors: Dagnachew Woldeyohannes, Sri Srinivasan and Adrian Aguero ");
+	System.out.println(" ");
+	
+	System.out.println("Select an Option: \n ...................");
 	for (int i=0; i<options.size(); i++) {
 		System.out.println(i + 1 + ")" + options.get(i));
 	}

@@ -20,11 +20,7 @@ public class CustomerCarDao {
 	private final String CREATE_CUSTOMERS_LIST_QUERY = "SELECT * FROM customers";
 	private final String DELETE_CAR_BY_ID_QUERY = "DELETE FROM customers WHERE rentcar_id = ?";
 	private final String ADD_NEW_CUSTOMER_QUERY = "INSERT INTO customers(rentcar_id, first_name, last_name, address, city, state, zip, phone_number) "
-			+ "VALUES (carId, 'firstname', 'lastname', ' address', 'city', 'state', zip, phone )"; 
-	
-	
-			
-			
+			+ "VALUES (carId, 'firstname', 'lastname', 'address', 'city', 'state', zip, phone )"; 
 			  
 	
 	// This connection need to be done at any DAO class to be able to connect to the Connection class.
@@ -32,20 +28,7 @@ public class CustomerCarDao {
 		connection = DBCarConnection.getConnection();
 	}
 	
-	//public List<CustomerCar> showAllCustomersRecords() throws SQLException{
-	//	List<CustomerCar> cus = new ArrayList<CustomerCar>();
-	//	ResultSet rs =  connection.prepareStatement(CREATE_CUSTOMERS_LIST_QUERY).executeQuery();		
-	//	 while(rs.next()) {
-	//		 cus.add(populateCustomerData(rs.getInt(1), rs.getString(3), rs.getString(4), rs.getInt(9)));
-	//	 }
-	//	 return cus;
-		 
-	//}
-		
-	///private CustomerCar populateCustomerData(int id, String name, String lastname, int phone) {
-	//	return new CustomerCar(id, name, lastname, phone);
-			
-	//}
+	
 
 	public void deleteCarById(int id) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(DELETE_CAR_BY_ID_QUERY);
