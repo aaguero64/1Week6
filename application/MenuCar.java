@@ -122,6 +122,7 @@ private void deleteCar() throws SQLException {
 	timerentCarDao.deleteCarById(id);
 	customerCarDao.deleteCarById(id);
 	rentcarDao.deleteCarById(id);
+	System.out.println("Car record deleted.");
 }
 
 private void displayCarRentalRecords() throws SQLException {
