@@ -58,8 +58,8 @@ public class TimerentCarDao {
 			return car;
 	}
 
-	private TimerentCar populateRentalData(int int1, int int2, String string1, String string2, int int3) {
-		return new TimerentCar(int1, int2, string1, string2, int2);
+	private TimerentCar populateRentalData(int int1, int int2, int int3, String string1, String string2, int int4) {
+		return new TimerentCar(int1, int2, int3, string1, string2, int4);
 	
 	
 	}
