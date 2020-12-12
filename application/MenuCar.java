@@ -8,6 +8,7 @@ import java.util.Scanner;
 import dao.CustomerCarDao;
 import dao.RentCarDao;
 import dao.TimerentCarDao;
+import entity.CustomerCar;
 import entity.RentCar;
 import entity.TimerentCar;
 
@@ -88,8 +89,15 @@ private void createCar() throws SQLException {
 }
 
 private void readCustomers() throws SQLException {
-	System.out.println("Customers List ");
-	customerCarDao.getCustomer();
+	List<CustomerCar> cus = customerCarDao.showAllCustomersRecords();
+	System.out.println("Cust Id:\t   Cust Name:\t\t Cust Last Name:\t Phone Number");
+	System.out.println("------------------------------------------------------------------------------");
+	for (CustomerCar c : cus) {
+		String result = (c.getCustomerId() + "t" + c.getCustomerFirstName() + "\t\t  " + c.getCustomerLastName() + "\t" + c.getCustomerPhoneNumber());
+		System.out.println(result);
+	}
+	//System.out.println("Customers List ");
+	//customerCarDao.getCustomer();
 }
 	
 private void updateCar() throws SQLException {

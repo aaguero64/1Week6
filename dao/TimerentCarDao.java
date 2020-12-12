@@ -59,9 +59,8 @@ public class TimerentCarDao {
 	}
 
 	private TimerentCar populateRentalData(int int1, int int2, String string1, String string2, int int3) {
-		return new TimerentCar(int1, int2, string1, string2, int3);
+		return new TimerentCar(int1, int2, string1, string2, int2);
 	
 	
 	}
-
 }
