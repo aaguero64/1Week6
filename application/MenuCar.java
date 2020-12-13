@@ -8,7 +8,7 @@ import java.util.Scanner;
 import dao.CustomerCarDao;
 import dao.RentCarDao;
 import dao.TimerentCarDao;
-import entity.CustomerCar;
+//import entity.CustomerCar;
 import entity.RentCar;
 import entity.TimerentCar;
 
@@ -77,6 +77,9 @@ private void printMenu() {
 	}
 
 	private void createCar() throws SQLException {
+		System.out.println("     ");
+		System.out.println( " Adding a New Car");
+		System.out.println(" -----------------");
 		System.out.print("Enter car make:  ");
 		String carMake = scanner.nextLine();
 		System.out.print("Enter car model:  ");
@@ -89,6 +92,8 @@ private void printMenu() {
 	}
 
 	private void readCustomers() throws SQLException {
+		System.out.println(" Showing Customer Information");
+		System.out.println(" ****************************");
 		System.out.println("Cust Id:   Cust Full Name:\t Phone Number");
 		System.out.println("-------------------------------------------------------------");
 		customerCarDao.getCustomer();
@@ -127,7 +132,10 @@ private void printMenu() {
 	
 	private void displayCarRentalRecords() throws SQLException {
 		List<TimerentCar> car = timerentCarDao.showAllRentRecords();
+		System.out.println("\t\t  Car  Rental  List ");
+		System.out.println("\t\t ********************");
 		System.out.println("Id:\tCar ID:\t  CustomerID:\t\tStart Date:\tEndDate:\tMiles");
+	
 		System.out.println("---------------------------------------------------------------------------------------------------");
 		for ( TimerentCar c : car ) {
 			String result = (c.getId() + "\t" + c.getRentcars() + "\t\t" + c.getCustomercars() + "\t\t" + c.getStartDate() + "\t" + c.getEndDate() + "\t" +  c.getMilesQty());
