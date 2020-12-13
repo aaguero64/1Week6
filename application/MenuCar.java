@@ -23,7 +23,8 @@ public class MenuCar {
 			"Update Car Transaction",
 			"Display Car Rental Records",
 			"Display All Cars",
-			"Read a Customer");
+			"Read a Customer",
+			"Delete a Car");
 				
 	public void enter() {
 	
